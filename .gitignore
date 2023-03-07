@@ -352,5 +352,4 @@ MigrationBackup/
 
 #clion
 .idea
-Proiect1/.idea
-Proiect1/cmake-build-debug
+cmake-build-debug
