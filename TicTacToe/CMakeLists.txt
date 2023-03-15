@@ -2,11 +2,14 @@ add_library(TicTacToe
         #.cpp
         src/Board.cpp
         src/TicTacToePvP.cpp
+        src/PlayerImpl.cpp
         #.h
         include/Board.h
         include/ITicTacToe.h
         include/IPlayer.h
         include/TicTacToePvP.h
+        include/PlayerImpl.h
+        include/ECellType.h
 )
 
 target_include_directories(TicTacToe

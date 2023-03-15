@@ -11,11 +11,19 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(Tests
-        main.cpp)
+        main.cpp
+        TicTacToePvPTests.cpp
+        BoardTests.cpp
+        Mocks.h)
+
+target_include_directories(Tests
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(Tests
     PRIVATE
         gtest
         gmock
+        TicTacToe
 )
 

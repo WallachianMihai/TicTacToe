@@ -3,24 +3,30 @@
 
 #include <array>
 #include <cstdint>
+#include <ostream>
+#include <ECellType.h>
 
-namespace TicTacToe {
-
-class Board
+namespace TicTacToe
 {
-public:
-    Board();
+    class Board
+    {
+    public:
+        Board();
 
-    bool IsFull() const;
-    void Sketch(const uint8_t index, const char toSketch);
+        bool IsFull() const;
+        void Sketch(const uint8_t index, const ECellType toSketch);
 
-    char ElementAt(const uint8_t index) const;
-    char operator()(const uint8_t line, const uint8_t column) const;
+        ECellType operator[](const uint8_t index) const;
+        ECellType operator()(const uint8_t line, const uint8_t column) const;
+        void ClearBoard();
+        uint8_t GetSize() const;
 
-private:
-    std::array<char, 9> m_board;
-};
+        friend std::ostream& operator<<(std::ostream& os, const Board& board);
 
+    private:
+        std::array<std::string, 9> m_board;
+        const uint8_t SIZE = 3;
+    };
 } // namespace TicTacToe
 
 #endif //PROIECT1_BOARD_H
