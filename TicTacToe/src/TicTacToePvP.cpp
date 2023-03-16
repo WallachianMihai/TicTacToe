@@ -1,30 +1,37 @@
-//
-// Created by mihai on 07.03.2023.
-//
-
 #include "TicTacToePvP.h"
 #include <algorithm>
 #include <iostream>
 
 namespace TicTacToe
 {
-    TicTacToePvP::TicTacToePvP(IPlayer* playerX, IPlayer* playerZero)
+    TicTacToePvP::TicTacToePvP(const IPlayerPtr& playerX, const IPlayerPtr& playerZero)
         : m_listeners{}
-        , m_players{playerX, playerZero}
+        , m_players{ playerX, playerZero }
         , m_state { EGameState::Ongoing }
         , m_round{ 0 }
         , m_board{}
     {
     }
 
-    void TicTacToePvP::AddListener(ITicTacToeListener *listener)
+    void TicTacToePvP::AddListener(ITicTacToeListenerPtr listener)
     {
         m_listeners.emplace_back(listener);
     }
 
     void TicTacToePvP::RemoveListener(ITicTacToeListener *listener)
     {
-        (void)std::remove(m_listeners.begin(), m_listeners.end(), listener);
+       for (auto it = m_listeners.begin(); it != m_listeners.end(); )
+       {
+           if (auto ptr = it->lock())
+           {
+               if (ptr.get() == listener)
+                   it = m_listeners.erase(it);
+               else
+                   ++it;
+           }
+           else
+               it = m_listeners.erase(it);
+       }
     }
 
     void TicTacToePvP::CheckState()
@@ -115,13 +122,32 @@ namespace TicTacToe
 
     bool TicTacToePvP::MakeMove(const uint8_t i, const uint8_t j)
     {
-        if(GetValue(i, j) != ECellType::EMPTY)
+        if (GetValue(i, j) != ECellType::EMPTY)
             return false;
 
-        if(m_round % 2 == 0)
+        if (m_round % 2 == 0)
         {
             m_board.Sketch(i * m_board.GetSize() + j, ECellType::X);
             CheckState();
+
+            for (const auto& listener : m_listeners)
+            {
+                if (auto ptr = listener.lock())
+                {
+                    ptr->OnMove(this);
+                }
+            }
+
+            if (GetState() != EGameState::Ongoing)
+            {
+                for (const auto& listener : m_listeners)
+                {
+                    if (auto ptr = listener.lock())
+                    {
+                        ptr->OnFinish(GetState(), GetCurrentPlayer());
+                    }
+                }
+            }
             ++m_round;
             return true;
         }
@@ -129,6 +155,26 @@ namespace TicTacToe
         {
             m_board.Sketch(i * m_board.GetSize() + j, ECellType::ZERO);
             CheckState();
+
+            for (const auto& listener : m_listeners)
+            {
+                if (auto ptr = listener.lock())
+                {
+                    ptr->OnMove(this);
+                }
+            }
+
+            if (GetState() != EGameState::Ongoing)
+            {
+                for (const auto& listener : m_listeners)
+                {
+                    if (auto ptr = listener.lock())
+                    {
+                        ptr->OnFinish(GetState(), GetCurrentPlayer());
+                    }
+                }
+            }
+
             ++m_round;
             return true;
         }
@@ -154,9 +200,14 @@ namespace TicTacToe
         return m_board(i, j);
     }
 
-    uint8_t TicTacToePvP::GetCurrentPlayer() const
+    IPlayer* TicTacToePvP::GetCurrentPlayer() const
     {
-        return m_round % 2;
+        return m_round % 2 == 0 ? m_players.first.lock().get() : m_players.second.lock().get();
+    }
+
+    uint8_t TicTacToePvP::GetBoardSize() const
+    {
+        return m_board.GetSize();
     }
 
 } // namespace TicTacToe

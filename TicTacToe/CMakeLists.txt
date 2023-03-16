@@ -3,6 +3,7 @@ add_library(TicTacToe
         src/Board.cpp
         src/TicTacToePvP.cpp
         src/PlayerImpl.cpp
+        src/ITicTacToe.cpp
         #.h
         include/Board.h
         include/ITicTacToe.h

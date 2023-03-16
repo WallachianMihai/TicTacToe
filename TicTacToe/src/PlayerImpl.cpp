@@ -6,6 +6,17 @@
 
 namespace TicTacToe
 {
+    IPlayerPtr IPlayer::Produce(EPlayerType type, const std::string& name)
+    {
+        switch (type)
+        {
+            case EPlayerType::Human:
+                return std::make_shared<PlayerImpl>(name);
+            default:
+                return {};
+        }
+    }
+
     PlayerImpl::PlayerImpl(const std::string &name)
         : m_name{ name }
     {}
