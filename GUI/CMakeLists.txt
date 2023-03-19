@@ -38,4 +38,8 @@ target_include_directories(GUI
 
 target_link_libraries(GUI
     PRIVATE
-        Qt${QT_VERSION_MAJOR}::Widgets)
+        Qt${QT_VERSION_MAJOR}::Widgets
+        TicTacToe
+)
+
+add_definitions(-DRESOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Resources")

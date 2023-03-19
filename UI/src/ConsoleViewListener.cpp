@@ -1,13 +1,13 @@
 #include <ConsoleViewListener.h>
 #include <iostream>
 
-void ConsoleViewListener::OnMove(const TicTacToe::ITicTacToe* ticTacToe) const
+void ConsoleViewListener::OnMove(const TicTacToe::ITicTacToe* ticTacToe, const uint8_t i, const uint8_t j)
 {
-    for (uint8_t i = 0; i < ticTacToe->GetBoardSize(); ++i)
+    for (uint8_t k = 0; k < ticTacToe->GetBoardSize(); ++k)
     {
-        for (uint8_t j = 0; j < ticTacToe->GetBoardSize(); ++j)
+        for (uint8_t l = 0; l < ticTacToe->GetBoardSize(); ++l)
         {
-            switch (ticTacToe->GetValue(i, j))
+            switch (ticTacToe->GetValue(k, l))
             {
                 case TicTacToe::ECellType::X:
                     std::cout << 'x' << " ";
@@ -23,20 +23,19 @@ void ConsoleViewListener::OnMove(const TicTacToe::ITicTacToe* ticTacToe) const
         }
         std::cout << std::endl;
     }
-
 }
 
-void ConsoleViewListener::OnFinish(const TicTacToe::EGameState state, const TicTacToe::IPlayer* winner) const
+void ConsoleViewListener::OnFinish(const TicTacToe::ITicTacToe* ticTacToe, const uint8_t i, const uint8_t j) const
 {
-    switch(state)
+    switch(ticTacToe->GetState())
     {
         case TicTacToe::EGameState::Tie:
             std::cout << "Tie! No one wins..." << std::endl;
             break;
         case TicTacToe::EGameState::FirstPlayerWon:
-            if(winner)
+            if(ticTacToe->GetCurrentPlayer())
             {
-                std::cout << winner->GetName() << " wins!" << std::endl;
+                std::cout << ticTacToe->GetCurrentPlayer()->GetName() << " wins!" << std::endl;
             }
             else
             {
@@ -44,9 +43,9 @@ void ConsoleViewListener::OnFinish(const TicTacToe::EGameState state, const TicT
             }
             break;
         case TicTacToe::EGameState::SecondPlayerWon:
-            if(winner)
+            if(ticTacToe->GetCurrentPlayer())
             {
-                std::cout << winner->GetName() << " wins!" << std::endl;
+                std::cout << ticTacToe->GetCurrentPlayer()->GetName() << " wins!" << std::endl;
             }
             else
             {

@@ -1,10 +1,10 @@
-#include "tictactoe.h"
+#include "Game.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    TicTacToe w;
+    Game w;
     w.show();
     return a.exec();
 }

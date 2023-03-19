@@ -14,14 +14,18 @@ namespace TicTacToe
         /**
          * @brief Takes a pointer to a game TicTacToe and will perform a specific action whenever the game makes a new move
          * @param ticTacToe A pointer towards the desired game to listen to
+         * @param i The row index selected
+         * @param j The column index selected
          */
-        virtual void OnMove(const class ITicTacToe* ticTacToe) const = 0;
+        virtual void OnMove(const class ITicTacToe* ticTacToe, const uint8_t i, const uint8_t j) = 0;
+
         /**
          * @brief Takes a pointer to a game TicTacToe and will perform a specific action when the game is over
-         * @param state
-         * @param winner
+         * @param ticTacToe A pointer towards the desired game to listen to
+         * @param i The row index selected
+         * @param j The column index selected
          */
-        virtual void OnFinish(const EGameState state, const IPlayer* winner) const = 0;
+        virtual void OnFinish(const class ITicTacToe* ticTacToe, const uint8_t i, const uint8_t j) const = 0;
 
         virtual ~ITicTacToeListener() = default;
     };

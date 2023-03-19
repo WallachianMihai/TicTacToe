@@ -1,24 +1,21 @@
-#ifndef TICTACTOE_H
-#define TICTACTOE_H
+#pragma once
 
 #include <QMainWindow>
+#include <GraphicViewListener.h>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class TicTacToe; }
+namespace Ui { class Game; }
 QT_END_NAMESPACE
 
-class TicTacToe : public QMainWindow
+class Game : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    TicTacToe(QWidget *parent = nullptr);
-    ~TicTacToe();
+    Game(QWidget *parent = nullptr);
+    ~Game();
 
-private:
-    Ui::TicTacToe *ui;
-    
-/*private slots:
+private slots:
     void on_field_00_clicked();
     void on_field_01_clicked();
     void on_field_02_clicked();
@@ -28,6 +25,12 @@ private:
     void on_field_20_clicked();
     void on_field_21_clicked();
     void on_field_22_clicked();
-    */
+
+
+private:
+    Ui::Game *ui;
+    TicTacToe::ITicTacToePtr m_ticTacToe;
+    TicTacToe::ITicTacToeListenerPtr m_listener;
+
 };
-#endif // TICTACTOE_H
+

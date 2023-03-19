@@ -138,7 +138,7 @@ namespace TicTacToe
             {
                 if (auto ptr = listener.lock())
                 {
-                    ptr->OnMove(this);
+                    ptr->OnMove(this, i, j);
                 }
             }
 
@@ -148,7 +148,7 @@ namespace TicTacToe
                 {
                     if (auto ptr = listener.lock())
                     {
-                        ptr->OnFinish(GetState(), GetCurrentPlayer());
+                        ptr->OnFinish(this, i, j);
                     }
                 }
             }
@@ -164,7 +164,7 @@ namespace TicTacToe
             {
                 if (auto ptr = listener.lock())
                 {
-                    ptr->OnMove(this);
+                    ptr->OnMove(this, i, j);
                 }
             }
 
@@ -174,7 +174,7 @@ namespace TicTacToe
                 {
                     if (auto ptr = listener.lock())
                     {
-                        ptr->OnFinish(GetState(), GetCurrentPlayer());
+                        ptr->OnFinish(this, i, j);
                     }
                 }
             }

@@ -4,6 +4,9 @@
 #include <IPlayer.h>
 #include <ITicTacToeListener.h>
 #include <gmock/gmock.h>
+#include <type_traits>
+#include <gmock/internal/gmock-internal-utils.h>
+#include <gtest/internal/gtest-internal.h>
 
 namespace TicTacToeTests
 {
@@ -18,8 +21,10 @@ namespace TicTacToeTests
     class ITicTacToeListenerMock : public TicTacToe::ITicTacToeListener
     {
     public:
-        MOCK_CONST_METHOD1(OnMove, void(const TicTacToe::ITicTacToe*));
-        MOCK_CONST_METHOD2(OnFinish, void(const TicTacToe::EGameState state, const TicTacToe::IPlayer*));
+        ITicTacToeListenerMock() = default;
+
+        MOCK_METHOD3(OnMove, void(const TicTacToe::ITicTacToe*, const uint8_t i, const uint8_t j));
+        MOCK_CONST_METHOD3(OnFinish, void(const TicTacToe::ITicTacToe*, const uint8_t i, const uint8_t j));
     };
 } // namespace TicTacToeTests
 #endif //TICTACTOEGAME_MOCKS_H
