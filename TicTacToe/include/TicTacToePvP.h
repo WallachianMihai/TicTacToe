@@ -29,9 +29,6 @@ namespace TicTacToe
         IPlayer* GetCurrentPlayer() const override;
 
         bool MakeMove(const uint8_t i, const uint8_t j) override;
-
-        void Reset() override;
-
     private:
         std::vector<ITicTacToeListenerWeakPtr> m_listeners;
         std::pair<IPlayerWeakPtr, IPlayerWeakPtr> m_players;

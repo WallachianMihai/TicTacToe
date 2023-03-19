@@ -122,8 +122,12 @@ namespace TicTacToe
 
     bool TicTacToePvP::MakeMove(const uint8_t i, const uint8_t j)
     {
-        if (GetValue(i, j) != ECellType::EMPTY)
+        if (i >= m_board.GetSize() ||
+            j >= m_board.GetSize() ||
+            GetValue(i, j) != ECellType::EMPTY)
+        {
             return false;
+        }
 
         if (m_round % 2 == 0)
         {
@@ -183,11 +187,6 @@ namespace TicTacToe
     void TicTacToePvP::PrintBoard() const
     {
         std::cout << m_board;
-    }
-
-    void TicTacToePvP::Reset()
-    {
-        m_board.ClearBoard();
     }
 
     EGameState TicTacToePvP::GetState() const

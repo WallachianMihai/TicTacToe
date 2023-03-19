@@ -30,7 +30,10 @@ void Game::Start() const
         std::cin >> rowInput >> columnInput;
         std::cout << std::endl;
 
-        m_ticTacToe->MakeMove(rowInput, columnInput);
+        if(!m_ticTacToe->MakeMove(rowInput, columnInput))
+        {
+            std::cout << "You can't sketch at that position! Please try again.\n" << std::endl;
+        }
     }
 }
 
