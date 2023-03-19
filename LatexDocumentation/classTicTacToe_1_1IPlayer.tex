@@ -1,0 +1,53 @@
+\hypertarget{classTicTacToe_1_1IPlayer}{}\doxysection{Tic\+Tac\+Toe\+::IPlayer Class Reference}
+\label{classTicTacToe_1_1IPlayer}\index{TicTacToe::IPlayer@{TicTacToe::IPlayer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string \mbox{\hyperlink{classTicTacToe_1_1IPlayer_a0d047b49ee0b2d475c5acf66d70348c2}{Get\+Name}} () const =0
+\begin{DoxyCompactList}\small\item\em A getter for the name of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static IPlayer\+Ptr \mbox{\hyperlink{classTicTacToe_1_1IPlayer_a702776c5a5e7014d9415c145dcaac685}{Produce}} (EPlayer\+Type type, const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Constructs a pointer to the specified implementation of this interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTicTacToe_1_1IPlayer_a0d047b49ee0b2d475c5acf66d70348c2}\label{classTicTacToe_1_1IPlayer_a0d047b49ee0b2d475c5acf66d70348c2}} 
+\index{TicTacToe::IPlayer@{TicTacToe::IPlayer}!GetName@{GetName}}
+\index{GetName@{GetName}!TicTacToe::IPlayer@{TicTacToe::IPlayer}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily virtual std\+::string Tic\+Tac\+Toe\+::\+IPlayer\+::\+Get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A getter for the name of the player. 
+
+\begin{DoxyReturn}{Returns}
+Returns the name of the player 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTicTacToe_1_1IPlayer_a702776c5a5e7014d9415c145dcaac685}\label{classTicTacToe_1_1IPlayer_a702776c5a5e7014d9415c145dcaac685}} 
+\index{TicTacToe::IPlayer@{TicTacToe::IPlayer}!Produce@{Produce}}
+\index{Produce@{Produce}!TicTacToe::IPlayer@{TicTacToe::IPlayer}}
+\doxysubsubsection{\texorpdfstring{Produce()}{Produce()}}
+{\footnotesize\ttfamily static IPlayer\+Ptr Tic\+Tac\+Toe\+::\+IPlayer\+::\+Produce (\begin{DoxyParamCaption}\item[{EPlayer\+Type}]{type,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Constructs a pointer to the specified implementation of this interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the desired player \\
+\hline
+{\em name} & The name of the player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer towards a player of the specified type 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+IPlayer.\+h\end{DoxyCompactItemize}

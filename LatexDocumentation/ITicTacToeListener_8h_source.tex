@@ -1,0 +1,30 @@
+\hypertarget{ITicTacToeListener_8h_source}{}\doxysection{ITic\+Tac\+Toe\+Listener.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PROIECT1\_ITICTACTOELISTENER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROIECT1\_ITICTACTOELISTENER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }TicTacToe}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{enum\ class}\ EGameState;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }IPlayer;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTicTacToe_1_1ITicTacToeListener}{ITicTacToeListener}}}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTicTacToe_1_1ITicTacToeListener_a7c7570ee2ba5baff5ebe1342332de3f8}{OnMove}}(\textcolor{keyword}{const}\ \textcolor{keyword}{class}\ \mbox{\hyperlink{classTicTacToe_1_1ITicTacToe}{ITicTacToe}}*\ ticTacToe,\ \textcolor{keyword}{const}\ uint8\_t\ i,\ \textcolor{keyword}{const}\ uint8\_t\ j)\ =\ 0;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTicTacToe_1_1ITicTacToeListener_aeda979d9c68a51460d1624d1ca55a093}{OnFinish}}(\textcolor{keyword}{const}\ \textcolor{keyword}{class}\ \mbox{\hyperlink{classTicTacToe_1_1ITicTacToe}{ITicTacToe}}*\ ticTacToe,\ \textcolor{keyword}{const}\ uint8\_t\ i,\ \textcolor{keyword}{const}\ uint8\_t\ j)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classTicTacToe_1_1ITicTacToeListener}{\string~ITicTacToeListener}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{using\ }ITicTacToeListenerPtr\ =\ std::shared\_ptr<ITicTacToeListener>;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{using\ }ITicTacToeListenerWeakPtr\ =\ std::weak\_ptr<ITicTacToeListener>;}
+\DoxyCodeLine{00035\ \}\ \textcolor{comment}{//\ namespace\ TicTacToe}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROIECT1\_ITICTACTOELISTENER\_H}}
+
+\end{DoxyCode}
