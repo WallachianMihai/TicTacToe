@@ -12,6 +12,7 @@ namespace TicTacToe
     {
     public:
         Board();
+        Board& operator=(const Board& other);
 
         bool IsFull() const;
         void Sketch(const uint8_t index, const ECellType toSketch);

@@ -6,6 +6,7 @@
 #include <ITicTacToeListener.h>
 #include <IPlayer.h>
 #include <ECellType.h>
+#include <EDifficultyType.h>
 
 namespace TicTacToe
 {
@@ -34,18 +35,21 @@ namespace TicTacToe
          * @param p2 A pointer towards the second player
          * @return A shared pointer towards an implementation of the specified type
          */
-        static ITicTacToePtr Produce(const EGameType type, const IPlayerPtr& p1 = nullptr, const IPlayerPtr& p2 = nullptr);
+        static ITicTacToePtr Produce(const EGameType type,
+                                     const IPlayerPtr& p1 = nullptr,
+                                     const IPlayerPtr& p2 = nullptr,
+                                     EGameDifficulty difficulty = EGameDifficulty::None);
 
 
         /**
          * @brief Adds a listener to the list of observers
-         * @param listener A shared pointer torwards the listener to add
+         * @param listener A shared pointer towards the listener to add
          */
         virtual void AddListener(ITicTacToeListenerPtr listener) = 0;
 
         /**
          * @brief Removes a listener from the list of observers
-         * @param listener A pointer torwards the listener to remove
+         * @param listener A pointer towards the listener to remove
          */
         virtual void RemoveListener(ITicTacToeListener *listener) = 0;
 
@@ -82,6 +86,12 @@ namespace TicTacToe
          * @return True if the move has been done successfully, false otherwise
          */
         virtual bool MakeMove(const uint8_t i, const uint8_t j) = 0;
+
+        /**
+         * @brief Sets the difficulty of the game
+         * @param difficulty the desired difficulty
+         */
+        virtual void SetDificulty(EGameDifficulty difficulty) = 0;
 
         virtual ~ITicTacToe() = default;
     };

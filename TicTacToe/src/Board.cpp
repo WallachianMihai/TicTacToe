@@ -71,4 +71,9 @@ namespace TicTacToe
         return os;
     }
 
+    Board &Board::operator=(const Board &other)
+    {
+        this->m_board = other.m_board;
+    }
+
 } // namespace TicTacToe

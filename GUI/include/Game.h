@@ -25,7 +25,10 @@ private slots:
     void on_field_20_clicked();
     void on_field_21_clicked();
     void on_field_22_clicked();
+    void on_difficultyButton_clicked();
 
+private:
+    void UpdateLabels();
 
 private:
     Ui::Game *ui;

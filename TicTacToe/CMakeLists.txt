@@ -4,6 +4,9 @@ add_library(TicTacToe
         src/TicTacToePvP.cpp
         src/PlayerImpl.cpp
         src/ITicTacToe.cpp
+        src/EasyMode.cpp
+        src/HardMode.cpp
+        src/ITicTacToeStrategy.cpp
         #.h
         include/Board.h
         include/ITicTacToe.h
@@ -11,6 +14,10 @@ add_library(TicTacToe
         include/TicTacToePvP.h
         include/PlayerImpl.h
         include/ECellType.h
+        include/ITicTacToeStrategy.h
+        include/EasyMode.h
+        include/HardMode.h
+        include/EDifficultyType.h
 )
 
 target_include_directories(TicTacToe

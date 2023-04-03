@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
+    <width>748</width>
     <height>597</height>
    </rect>
   </property>
@@ -261,14 +261,28 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="difficultyButton">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>240</y>
+      <width>80</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Change
+Difficulty</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>681</width>
-     <height>23</height>
+     <width>748</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>
